@@ -1,7 +1,7 @@
 const { User, Thought } = require("../models");
 const { populate } = require("../models/User");
 
-const UserController = {
+const userController = {
   // get all users
   getAllUsers(req, res) {
     User.find({})
@@ -85,7 +85,7 @@ const UserController = {
   },
 
   //DELETE /api/users/:userId/friends/:friendId
-  removeFriend({ params }, res) {
+  deleteFriend({ params }, res) {
     User.findByIdAndUpdate(
       { _id: params.id },
       { $pull: { friends: params.friendId } },
